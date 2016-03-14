@@ -5,7 +5,7 @@ var program = require('commander');
 var colors  = require('colors');
 
 program
-    .version('0.0.2')
+    .version('0.0.3')
     .parse(process.argv);
 
 // Remove node arguments
