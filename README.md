@@ -23,7 +23,7 @@ $ mysql-reserved table require lamp
 
 # Results
 TABLE => reserved
-REQUIRE => keyword
+ACTION => keyword
 LAMP => not reserved
 ```
 
