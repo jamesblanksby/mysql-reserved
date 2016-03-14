@@ -19,10 +19,11 @@ $ mysql-reserved <words>
 For example:
 
 ```bash
-$ mysql-reserved table lamp
+$ mysql-reserved table require lamp
 
 # Results
 TABLE => reserved
+REQUIRE => keyword
 LAMP => not reserved
 ```
 
