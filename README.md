@@ -10,22 +10,25 @@ $ npm install -g mysql-reserved
 
 ## Usage
 
-Simply pass a space separated list of words to be checked.
+Initiate the program with the following command:
 
 ```bash
-$ mysql-reserved <words>
+$ mysql-reserved
 ```
 
-For example:
+Type a space delimited selection of words and press enter.
 
 ```bash
-$ mysql-reserved table require lamp
+$ mysql-reserved 
+$ table require lamp
 
 # Results
 TABLE => reserved
 ACTION => keyword
 LAMP => not reserved
 ```
+
+A new selection of words can be checked without having to initiate the program again.
 
 ## Licence
 
