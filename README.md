@@ -20,7 +20,7 @@ Type a space delimited selection of words and press enter.
 
 ```bash
 $ mysql-reserved 
-$ table require lamp
+$ table action lamp
 
 # Results
 TABLE => reserved
