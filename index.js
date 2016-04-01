@@ -5,22 +5,23 @@ var program = require('commander');
 var colors  = require('colors');
 
 program
-    .version('0.0.3')
+    .version('0.0.4')
     .parse(process.argv);
 
-// Remove node arguments
-process.argv.splice(0, 2);
-
-process.argv.forEach(function(word) {
-    var output = colors.white(word.toUpperCase() + ' => ');
-    if (is_reserved(word)) {
-        output += colors.red('reserved');
-    } else if (is_keyword(word)) {
-    	output += colors.yellow('keyword');
-    } else {
-        output += colors.green('not reserved');
-    }
-    console.log(output);
+process.stdin.on('data', function (text) {
+    var words = text.toString().replace('\n', '').split(' ');
+    
+    words.forEach(function(word) {
+	    var output = colors.white(word.toUpperCase() + ' => ');
+	    if (is_reserved(word)) {
+	        output += colors.red('reserved');
+	    } else if (is_keyword(word)) {
+	    	output += colors.yellow('keyword');
+	    } else {
+	        output += colors.green('not reserved');
+	    }
+	    console.log(output);
+	});
 });
 
 function is_reserved(word) {
