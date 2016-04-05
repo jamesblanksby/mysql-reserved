@@ -10,7 +10,7 @@ var count = []
 	count['unreserved'] = 0;
 
 program
-    .version('0.0.5')
+    .version('0.0.6')
     .parse(process.argv);
 
 process.stdin.on('data', function (text) {
