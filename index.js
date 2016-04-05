@@ -2,25 +2,52 @@
 
 var data    = require('./data.js');
 var program = require('commander');
-var colors  = require('colors');
+var term    = require('terminal-kit').terminal;
+
+var count = []
+	count['reserved']   = 0;
+	count['keyword']    = 0;
+	count['unreserved'] = 0;
 
 program
-    .version('0.0.4')
+    .version('0.0.5')
     .parse(process.argv);
 
 process.stdin.on('data', function (text) {
     var words = text.toString().replace('\n', '').split(' ');
+
+    if (words[0] === '\\q') {
+    	term.white('\nSession Statistics\n');
+    	term.red('Reserved: ');
+    	term.column(13);
+    	term.red(count['reserved'] + '\n');
+
+    	term.yellow('Keyword: ');
+    	term.column(13);
+    	term.red(count['keyword'] + '\n');
+
+    	term.green('Unreserved: ');
+    	term.column(13);
+    	term.red(count['unreserved'] + '\n\n');
+
+    	process.exit();
+    }
+
+    term.previousLine(1);
     
     words.forEach(function(word) {
-	    var output = colors.white(word.toUpperCase() + ' => ');
+	    term.white(word.toUpperCase() + ' => ');
 	    if (is_reserved(word)) {
-	        output += colors.red('reserved');
+	        term.red('reserved');
+	        count['reserved']++;
 	    } else if (is_keyword(word)) {
-	    	output += colors.yellow('keyword');
+	    	term.yellow('keyword');
+	    	count['keyword']++;
 	    } else {
-	        output += colors.green('not reserved');
+	        term.green('unreserved');
+	        count['unreserved']++;
 	    }
-	    console.log(output);
+	    term('\n');
 	});
 });
 
