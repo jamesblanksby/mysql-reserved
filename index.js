@@ -10,25 +10,25 @@ var count = []
 	count['unreserved'] = 0;
 
 program
-    .version('0.0.6')
+    .version('0.0.7')
     .parse(process.argv);
 
 process.stdin.on('data', function (text) {
     var words = text.toString().replace('\n', '').split(' ');
 
-    if (words[0] === '\\q') {
+    if (words[0] === '\\q' || words[0] === 'exit') {
     	term.white('\nSession Statistics\n');
     	term.red('Reserved: ');
     	term.column(13);
-    	term.red(count['reserved'] + '\n');
+    	term.white(count['reserved'] + '\n');
 
     	term.yellow('Keyword: ');
     	term.column(13);
-    	term.red(count['keyword'] + '\n');
+    	term.white(count['keyword'] + '\n');
 
     	term.green('Unreserved: ');
     	term.column(13);
-    	term.red(count['unreserved'] + '\n\n');
+    	term.white(count['unreserved'] + '\n\n');
 
     	process.exit();
     }
